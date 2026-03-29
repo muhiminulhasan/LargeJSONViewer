@@ -1,0 +1,440 @@
+object FrmMain: TFrmMain
+  Left = 437
+  Height = 600
+  Top = 32
+  Width = 936
+  Caption = 'Large JSON Viewer'
+  ClientHeight = 600
+  ClientWidth = 936
+  DesignTimePPI = 120
+  Menu = mnuMain
+  ParentFont = True
+  Position = poScreenCenter
+  LCLVersion = '4.6.0.0'
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  object pnlContainer: TPanel
+    Left = 0
+    Height = 600
+    Top = 0
+    Width = 936
+    Align = alClient
+    BevelOuter = bvNone
+    ClientHeight = 600
+    ClientWidth = 936
+    TabOrder = 0
+    Wordwrap = True
+    object pnlTop: TPanel
+      Left = 0
+      Height = 31
+      Top = 0
+      Width = 936
+      Align = alTop
+      BevelOuter = bvNone
+      ClientHeight = 31
+      ClientWidth = 936
+      TabOrder = 0
+      object btnCase: TSpeedButton
+        Left = 0
+        Height = 31
+        Hint = 'Match Case (Alt + A)'
+        Top = 0
+        Width = 28
+        Align = alLeft
+        AllowAllUp = True
+        AutoSize = True
+        Caption = '&Aa'
+        GroupIndex = 1
+        OnClick = btnCaseClick
+      end
+      object btnRegEx: TSpeedButton
+        Left = 28
+        Height = 31
+        Hint = 'Use RegEx (Alt + Shift + 9)'
+        Top = 0
+        Width = 29
+        Align = alLeft
+        AllowAllUp = True
+        AutoSize = True
+        Caption = '&(.*)'
+        GroupIndex = 2
+        OnClick = btnRegExClick
+      end
+      object edtSearch: TEdit
+        Left = 57
+        Height = 31
+        Hint = 'Find here'
+        Top = 0
+        Width = 806
+        Align = alClient
+        AutoSelect = False
+        TabOrder = 0
+        TextHint = 'Please enter here to search'
+        OnChange = edtSearchChange
+      end
+      object btnPrevious: TBitBtn
+        Left = 863
+        Height = 31
+        Top = 0
+        Width = 36
+        Align = alRight
+        AutoSize = True
+        Caption = '<'
+        TabOrder = 1
+        OnClick = btnPreviousClick
+      end
+      object btnNext: TBitBtn
+        Left = 899
+        Height = 31
+        Top = 0
+        Width = 36
+        Align = alRight
+        AutoSize = True
+        Caption = '>'
+        TabOrder = 2
+        OnClick = btnNextClick
+      end
+      object Label1: TLabel
+        Left = 935
+        Height = 31
+        Top = 0
+        Width = 1
+        Align = alRight
+      end
+    end
+    object pnlStatusBarContainer: TPanel
+      Left = 0
+      Height = 79
+      Top = 521
+      Width = 936
+      Align = alBottom
+      BevelOuter = bvNone
+      ClientHeight = 79
+      ClientWidth = 936
+      TabOrder = 1
+      object StatusBar1: TStatusBar
+        Left = 0
+        Height = 29
+        Top = 21
+        Width = 936
+        Panels = <>
+      end
+      object StatusBar2: TStatusBar
+        Left = 0
+        Height = 29
+        Top = 50
+        Width = 936
+        Panels = <>
+      end
+    end
+    object pnlTreeViewContainer: TPanel
+      Left = 0
+      Height = 490
+      Top = 31
+      Width = 936
+      Align = alClient
+      BevelOuter = bvNone
+      ClientHeight = 490
+      ClientWidth = 936
+      TabOrder = 2
+      object Panel1: TPanel
+        Left = 272
+        Height = 63
+        Top = 120
+        Width = 213
+        BevelOuter = bvNone
+        TabOrder = 0
+      end
+    end
+  end
+  object mnuMain: TMainMenu
+    Left = 792
+    Top = 80
+    object mnuFile: TMenuItem
+      Caption = '&File'
+      OnClick = mnuFileClick
+      object mnuNewWindow: TMenuItem
+        Caption = '&New Window'
+        OnClick = mnuNewWindowClick
+      end
+      object mnuOpen: TMenuItem
+        Action = actFileOpen
+        OnClick = mnuOpenClick
+      end
+      object mnuOpenFolder: TMenuItem
+        Caption = 'Open Folder...'
+        OnClick = mnuOpenFolderClick
+      end
+      object mnuOpenURL: TMenuItem
+        Caption = 'Open URL...'
+        OnClick = mnuOpenURLClick
+      end
+      object mnuPasteClipboard: TMenuItem
+        Caption = 'Paste Clipboard...'
+        OnClick = mnuPasteClipboardClick
+      end
+      object mnuRecentFiles: TMenuItem
+        Caption = 'Recent Files'
+      end
+      object Separator1: TMenuItem
+        Caption = '-'
+      end
+      object mnuExportAs: TMenuItem
+        Caption = 'Export As...'
+        object mnuExportAsJSON: TMenuItem
+          Caption = 'JSON'
+          OnClick = mnuExportAsClick
+        end
+        object mnuExportAsMinifiedJSON: TMenuItem
+          Tag = 1
+          Caption = 'Minified JSON'
+          OnClick = mnuExportAsClick
+        end
+        object mnuExportAsBeautifiedJSON: TMenuItem
+          Tag = 2
+          Caption = 'Beautified JSON'
+          OnClick = mnuExportAsClick
+        end
+        object Separator12: TMenuItem
+          Caption = '-'
+        end
+        object mnuExportAsMinifiedXML: TMenuItem
+          Tag = 3
+          Caption = 'Minified XML'
+          OnClick = mnuExportAsClick
+        end
+        object mnuExportAsBeautifiedXML: TMenuItem
+          Tag = 4
+          Caption = 'Beautified XML'
+          OnClick = mnuExportAsClick
+        end
+        object Separator13: TMenuItem
+          Caption = '-'
+        end
+        object mnuExportAsCSV: TMenuItem
+          Tag = 5
+          Caption = 'CSV'
+          OnClick = mnuExportAsClick
+        end
+        object mnuExportAsYAML: TMenuItem
+          Tag = 6
+          Caption = 'YAML'
+          OnClick = mnuExportAsClick
+        end
+        object mnuExportAsTOML: TMenuItem
+          Tag = 7
+          Caption = 'TOML'
+          OnClick = mnuExportAsClick
+        end
+      end
+      object mnuExportSectionAs: TMenuItem
+        Caption = 'Export Selection As...'
+        object mnuExportSectionAsJSON: TMenuItem
+          Caption = 'JSON'
+          OnClick = mnuExportSectionAsClick
+        end
+        object mnuExportSectionAsMinifiedJSON: TMenuItem
+          Tag = 1
+          Caption = 'Minified JSON'
+          OnClick = mnuExportSectionAsClick
+        end
+        object mnuExportSectionAsBeautifiedJSON: TMenuItem
+          Tag = 2
+          Caption = 'Beautified JSON'
+          OnClick = mnuExportSectionAsClick
+        end
+        object Separator14: TMenuItem
+          Caption = '-'
+        end
+        object mnuExportSectionAsMinifiedXML: TMenuItem
+          Tag = 3
+          Caption = 'Minified XML'
+          OnClick = mnuExportSectionAsClick
+        end
+        object mnuExportSectionAsBeautifiedXML: TMenuItem
+          Tag = 4
+          Caption = 'Beautified XML'
+          OnClick = mnuExportSectionAsClick
+        end
+        object Separator15: TMenuItem
+          Caption = '-'
+        end
+        object mnuExportSectionAsCSV: TMenuItem
+          Tag = 5
+          Caption = 'CSV'
+          OnClick = mnuExportSectionAsClick
+        end
+        object mnuExportSectionAsYAML: TMenuItem
+          Tag = 6
+          Caption = 'YAML'
+          OnClick = mnuExportSectionAsClick
+        end
+        object mnuExportSectionAsTOML: TMenuItem
+          Tag = 7
+          Caption = 'TOML'
+          OnClick = mnuExportSectionAsClick
+        end
+      end
+      object Separator2: TMenuItem
+        Caption = '-'
+      end
+      object mnuQuit: TMenuItem
+        Action = actFileExit
+        OnClick = mnuQuitClick
+      end
+    end
+    object mnuEdit: TMenuItem
+      Caption = '&Edit'
+      OnClick = mnuEditClick
+      object mnuFind: TMenuItem
+        Caption = '&Find'
+        ShortCut = 16498
+        OnClick = mnuFindClick
+      end
+      object mnuFindNext: TMenuItem
+        Caption = 'Find &Next'
+        ShortCut = 114
+        OnClick = mnuFindNextClick
+      end
+      object mnuFindPrevious: TMenuItem
+        Caption = 'Find &Previous'
+        ShortCut = 8306
+        OnClick = mnuFindPreviousClick
+      end
+      object Separator3: TMenuItem
+        Caption = '-'
+      end
+      object mnuCopyData: TMenuItem
+        Caption = 'Copy Data'
+        ShortCut = 24643
+        OnClick = mnuCopyDataClick
+      end
+      object mnuCopyDataAs: TMenuItem
+        Caption = 'Copy Data As...'
+        object mnuMinifiedJson: TMenuItem
+          Caption = 'Minified JSON'
+          ShortCut = 24653
+          OnClick = mnuMinifiedJsonClick
+        end
+        object mnuBeautifiedJson: TMenuItem
+          Caption = 'Beautified JSON'
+          ShortCut = 24642
+          OnClick = mnuBeautifiedJsonClick
+        end
+      end
+      object Separator4: TMenuItem
+        Caption = '-'
+      end
+      object mnuCopySelectionName: TMenuItem
+        Caption = 'Copy Selection Name'
+        OnClick = mnuCopySelectionNameClick
+      end
+      object mnuCopySelectionValue: TMenuItem
+        Caption = 'Copy Selection Value'
+        OnClick = mnuCopySelectionValueClick
+      end
+      object mnuCopySelectionValueAs: TMenuItem
+        Caption = 'Copy Selection Value As'
+        object mnuMinifiedValue: TMenuItem
+          Caption = 'Minified Value'
+          OnClick = mnuMinifiedValueClick
+        end
+        object mnuBeautifiedValue: TMenuItem
+          Caption = 'Beautified Value'
+          OnClick = mnuBeautifiedValueClick
+        end
+      end
+      object Separator5: TMenuItem
+        Caption = '-'
+      end
+      object mnuCopySelectionPath: TMenuItem
+        Caption = 'Copy Selection Path'
+        ShortCut = 16464
+        OnClick = mnuCopySelectionPathClick
+      end
+      object Separator6: TMenuItem
+        Caption = '-'
+      end
+      object mnuPreferences: TMenuItem
+        Caption = '&Preferences'
+        ShortCut = 16574
+        OnClick = mnuPreferencesClick
+      end
+    end
+    object mnuView: TMenuItem
+      Caption = '&View'
+      object mnuHideStatusBar: TMenuItem
+        Caption = 'Hide Status Bar'
+        OnClick = mnuHideStatusBarClick
+      end
+      object mnuHideNodePath: TMenuItem
+        Caption = 'Hide Node Path'
+        OnClick = mnuHideNodePathClick
+      end
+      object Separator7: TMenuItem
+        Caption = '-'
+      end
+      object mnuRefresh: TMenuItem
+        Caption = 'Refresh'
+        ShortCut = 116
+        OnClick = mnuRefreshClick
+      end
+      object Separator8: TMenuItem
+        Caption = '-'
+      end
+      object mnuCollapseAllNode: TMenuItem
+        Caption = 'Collapse All Node'
+        OnClick = mnuCollapseAllNodeClick
+      end
+      object mnuCollapseCurrentLevel: TMenuItem
+        Caption = 'Collapse Current Level'
+        OnClick = mnuCollapseCurrentLevelClick
+      end
+      object Separator10: TMenuItem
+        Caption = '-'
+      end
+      object mnuExpandCurrentLevel: TMenuItem
+        Caption = 'Expand Current Level'
+        OnClick = mnuExpandCurrentLevelClick
+      end
+      object Separator11: TMenuItem
+        Caption = '-'
+      end
+    end
+    object mnuHelp: TMenuItem
+      Caption = '&?'
+      object mnuReleaseNotes: TMenuItem
+        Caption = 'Releases'
+        OnClick = mnuReleaseNotesClick
+      end
+      object Separator9: TMenuItem
+        Caption = '-'
+      end
+      object mnuAbout: TMenuItem
+        Caption = 'About '
+        ShortCut = 112
+        OnClick = mnuAboutClick
+      end
+    end
+  end
+  object actlist: TActionList
+    Left = 872
+    Top = 152
+    object actFileOpen: TFileOpen
+      Category = 'File'
+      Caption = '&Open ...'
+      Hint = 'Open'
+      ShortCut = 16463
+    end
+    object actFileSaveAs: TFileSaveAs
+      Category = 'File'
+      Caption = 'Save &As ...'
+      Hint = 'Save As'
+    end
+    object actFileExit: TFileExit
+      Category = 'File'
+      Caption = 'E&xit'
+      Hint = 'Exit'
+    end
+  end
+end

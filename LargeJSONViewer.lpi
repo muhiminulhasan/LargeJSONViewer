@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="12"/>
+    <PathDelim Value="\"/>
+    <General>
+      <SessionStorage Value="InProjectDir"/>
+      <Title Value="LargeJSONViewer"/>
+      <Scaled Value="True"/>
+      <ResourceType Value="res"/>
+      <UseXPManifest Value="True"/>
+      <XPManifest>
+        <DpiAware Value="True"/>
+      </XPManifest>
+      <Icon Value="0"/>
+    </General>
+    <BuildModes>
+      <Item Name="Default" Default="True"/>
+      <Item Name="Win64">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <Target>
+            <Filename Value="LargeJSONViewer"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <OtherUnitFiles Value="src\core;src\search;src\ui;src\utils;src\simd"/>
+            <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <TargetCPU Value="x86_64"/>
+            <TargetOS Value="win64"/>
+            <Optimizations>
+              <OptimizationLevel Value="3"/>
+            </Optimizations>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+              <RunWithoutDebug Value="True"/>
+            </Debugging>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+        </CompilerOptions>
+      </Item>
+    </BuildModes>
+    <PublishOptions>
+      <Version Value="2"/>
+      <DestinationDirectory Value="C:\Users\0x00\Desktop\New folder"/>
+      <UseFileFilters Value="True"/>
+    </PublishOptions>
+    <RunParams>
+      <FormatVersion Value="2"/>
+    </RunParams>
+    <RequiredPackages>
+      <Item>
+        <PackageName Value="virtualtreeview_package"/>
+      </Item>
+      <Item>
+        <PackageName Value="laz.virtualtreeview_package"/>
+      </Item>
+      <Item>
+        <PackageName Value="LCL"/>
+      </Item>
+    </RequiredPackages>
+    <Units>
+      <Unit>
+        <Filename Value="LargeJSONViewer.lpr"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="src\ui\ufrmmain.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmMain"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uFrmMain"/>
+      </Unit>
+      <Unit>
+        <Filename Value="src\core\ujsontypes.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uJsonTypes"/>
+      </Unit>
+      <Unit>
+        <Filename Value="src\core\ujsonindex.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uJsonIndex"/>
+      </Unit>
+      <Unit>
+        <Filename Value="src\core\ufilehandler.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uFileHandler"/>
+      </Unit>
+      <Unit>
+        <Filename Value="src\core\ujsonparser.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uJsonParser"/>
+      </Unit>
+      <Unit>
+        <Filename Value="src\search\usearchengine.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uSearchEngine"/>
+      </Unit>
+      <Unit>
+        <Filename Value="src\search\ujsonpath.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uJsonPath"/>
+      </Unit>
+      <Unit>
+        <Filename Value="src\ui\uvirtualjsontree.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uVirtualJsonTree"/>
+      </Unit>
+      <Unit>
+        <Filename Value="src\ui\ustatusmanager.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uStatusManager"/>
+      </Unit>
+      <Unit>
+        <Filename Value="src\utils\ucache.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uCache"/>
+      </Unit>
+      <Unit>
+        <Filename Value=""/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="src\simd\usimd_scanner.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+    </Units>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="11"/>
+    <PathDelim Value="\"/>
+    <Target>
+      <Filename Value="LargeJSONViewer"/>
+    </Target>
+    <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir)"/>
+      <OtherUnitFiles Value="src\core;src\search;src\ui;src\utils;src\simd"/>
+      <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+    </SearchPaths>
+    <Parsing>
+      <SyntaxOptions>
+        <IncludeAssertionCode Value="True"/>
+      </SyntaxOptions>
+    </Parsing>
+    <CodeGeneration>
+      <Checks>
+        <IOChecks Value="True"/>
+        <RangeChecks Value="True"/>
+        <OverflowChecks Value="True"/>
+        <StackChecks Value="True"/>
+      </Checks>
+      <VerifyObjMethodCallValidity Value="True"/>
+      <Optimizations>
+        <OptimizationLevel Value="2"/>
+      </Optimizations>
+    </CodeGeneration>
+    <Linking>
+      <Debugging>
+        <DebugInfoType Value="dsDwarf3"/>
+      </Debugging>
+      <Options>
+        <Win32>
+          <GraphicApplication Value="True"/>
+        </Win32>
+      </Options>
+    </Linking>
+  </CompilerOptions>
+  <Debugging>
+    <Exceptions>
+      <Item>
+        <Name Value="EAbort"/>
+      </Item>
+      <Item>
+        <Name Value="ECodetoolError"/>
+      </Item>
+      <Item>
+        <Name Value="EFOpenError"/>
+      </Item>
+    </Exceptions>
+  </Debugging>
+</CONFIG>
